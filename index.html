@@ -139,7 +139,7 @@
 
         /* Главный раздел (Hero) */
         #hero {
-            background-image: url('venti-views-I1EWTM5mFEM-unsplash.jpg'); /* Яркое фото бегуна на рассвете */
+            background-image: url('Hero (шапка).jpg'); /* Яркое фото бегуна на рассвете */
             height: 100vh;
         }
         
@@ -177,11 +177,19 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
-        .card i { font-size: 3.5em; margin-bottom: 20px; color: var(--accent-orange); }
+        .card i { display: none; } /* Скрываем иконки */
+        .card img {
+            width: 100px; /* Или другой размер по желанию */
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%; /* Делаем изображения круглыми */
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow-light);
+        }
         .card h3 { color: var(--accent-burgundy); }
 
         /* Раздел "Подкаст" */
-        #podcast { background-image: url('https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2103&auto=format&fit=crop'); /* Бег в невероятно красивом пейзаже */ }
+        #podcast { background-image: url('Подкаст.jpg'); /* Бег в невероятно красивом пейзаже */ }
         .podcast-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .podcast-text { background: rgba(0,0,0,0.7); padding: 30px; border-radius: 15px; }
         .video-container {
@@ -271,7 +279,7 @@
                         </div>
                     </div>
                     <div>
-                         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop" alt="Тренер Александр Элконин с учеником">
+                         <img src="Тренер.jpg" alt="Тренер Александр Элконин с учеником">
                     </div>
                 </div>
             </div>
@@ -283,21 +291,21 @@
                 <h2 data-lang="en" style="display:none;">What We Offer</h2>
                 <div class="service-cards">
                     <div class="card">
-                        <i class="fas fa-globe"></i>
+                        <img src="Онлайн-ведение.jpg" alt="Онлайн-ведение">
                         <h3 data-lang="ru">Онлайн-ведение</h3>
                         <h3 data-lang="en" style="display:none;">Online Coaching</h3>
                         <p data-lang="ru">Персональные тренировочные планы, постоянная поддержка и анализ результатов, где бы вы ни находились.</p>
                         <p data-lang="en" style="display:none;">Personalized training plans, constant support, and analysis of results, wherever you are.</p>
                     </div>
                     <div class="card">
-                        <i class="fas fa-users"></i>
+                        <img src="Тренировки в Хайфе.jpg" alt="Тренировки в Хайфе">
                         <h3 data-lang="ru">Очные тренировки в Хайфе</h3>
                         <h3 data-lang="en" style="display:none;">In-Person Training in Haifa</h3>
                         <p data-lang="ru">Групповые и индивидуальные занятия с тренером для тех, кто живет в Хайфе и окрестностях.</p>
                         <p data-lang="en" style="display:none;">Group and individual sessions with a coach for those living in and around Haifa.</p>
                     </div>
                     <div class="card">
-                        <i class="fas fa-mountain"></i>
+                        <img src="Беговые сборы.jpg" alt="Беговые сборы">
                         <h3 data-lang="ru">Беговые сборы</h3>
                         <h3 data-lang="en" style="display:none;">Running Camps</h3>
                         <p data-lang="ru">Незабываемые беговые кэмпы в самых живописных уголках планеты для полного погружения.</p>
