@@ -12,19 +12,17 @@
 
     <style>
         /*
-         * НОВАЯ ЦВЕТОВАЯ СХЕМА: Светлая и радостная
-         * --bg-light: #FFFFFF (Основной фон)
-         * --text-dark: #333333 (Черный для основного текста)
-         * --accent-orange: #FF5722 (Яркий, энергичный оранжевый для кнопок и акцентов)
-         * --accent-burgundy: #800000 (Бордовый для заголовков)
+         * НОВАЯ ЦВЕТОВАЯ СХЕМА: Светлая тема + акцентные бордовые CTA
+         * --bg-light: #FFFFFF (Белый фон)
+         * --text-dark: #252525 (Темно-графитовый текст)
+         * --accent-burgundy: #800000 (Бордовый для кнопок и акцентов)
          * --box-shadow-light: 0 5px 25px rgba(0, 0, 0, 0.08) (Легкая тень для объема)
         */
 
         /* Общие стили */
         :root {
             --bg-light: #FFFFFF;
-            --text-dark: #333333;
-            --accent-orange: #FF5722;
+            --text-dark: #252525;
             --accent-burgundy: #800000;
             --box-shadow-light: 0 5px 25px rgba(0, 0, 0, 0.08);
         }
@@ -96,7 +94,7 @@
         }
 
         p { margin-bottom: 15px; font-size: 1.1rem; }
-        a { text-decoration: none; color: var(--accent-orange); }
+        a { text-decoration: none; } /* Убрал цвет по умолчанию, будет задаваться контекстно */
 
         /* Навигационное меню */
         #main-nav {
@@ -123,7 +121,7 @@
             color: var(--text-dark);
         }
 
-        #main-nav .logo span { color: var(--accent-orange); }
+        #main-nav .logo span { color: var(--accent-burgundy); }
         #main-nav ul { list-style: none; display: flex; align-items: center; }
         #main-nav ul li { margin-left: 25px; }
         #main-nav ul li a {
@@ -133,9 +131,13 @@
             border-bottom: 2px solid transparent;
             transition: color 0.3s ease, border-color 0.3s ease;
         }
-        #main-nav ul li a:hover { color: var(--accent-orange); border-bottom-color: var(--accent-orange); }
-        .lang-switcher a { margin-left: 10px; cursor: pointer; padding: 5px 8px; border-radius: 5px; }
-        .lang-switcher a.active { color: var(--accent-orange); font-weight: bold; }
+        #main-nav ul li a:hover,
+        #main-nav ul li a.active-link { /* Добавляем класс для активной ссылки */
+            color: var(--accent-burgundy);
+            border-bottom-color: var(--accent-burgundy);
+        }
+        .lang-switcher a { margin-left: 10px; cursor: pointer; padding: 5px 8px; border-radius: 5px; color: var(--text-dark); }
+        .lang-switcher a.active { color: var(--accent-burgundy); font-weight: bold; }
 
         /* Главный раздел (Hero) */
         #hero {
@@ -154,17 +156,28 @@
             padding: 15px 35px; border-radius: 50px; font-size: 1.2rem; font-weight: bold;
             border: 2px solid var(--accent-burgundy); transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(128, 0, 0, 0.4);
+            text-transform: uppercase; /* Делаем текст кнопок заглавными */
+            letter-spacing: 1px;
         }
         .btn:hover {
-            background: var(--accent-burgundy); border-color: var(--accent-burgundy);
-            transform: translateY(-5px); box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+            background: var(--accent-burgundy); /* При наведении цвет остается бордовым */
+            border-color: var(--accent-burgundy);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            margin-top: 15px;
         }
 
         /* Раздел "О нас" */
         .about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; align-items: center; margin-top: 40px;}
         .about-grid img { width: 100%; border-radius: 15px; box-shadow: var(--box-shadow-light); }
         .testimonials { margin-top: 40px; }
-        .testimonial { background: #fdf5f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid var(--accent-orange); }
+        .testimonial { background: #fdf5f2; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid var(--accent-burgundy); }
 
         /* Раздел "Мы предлагаем" */
         .service-cards {
@@ -179,14 +192,14 @@
         .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
         .card i { display: none; } /* Скрываем иконки */
         .card img {
-            width: 100px; /* Или другой размер по желанию */
-            height: 100px;
+            width: 100%; /* Изображение занимает всю ширину карточки */
+            max-height: 200px; /* Ограничиваем высоту */
             object-fit: cover;
-            border-radius: 50%; /* Делаем изображения круглыми */
+            border-radius: 8px; /* Небольшое скругление углов */
             margin-bottom: 20px;
             box-shadow: var(--box-shadow-light);
         }
-        .card h3 { color: var(--accent-burgundy); }
+        .card h3 { color: var(--accent-burgundy); margin-bottom: 15px; }
 
         /* Раздел "Подкаст" */
         #podcast { background-image: url('Подкаст.jpg'); /* Бег в невероятно красивом пейзаже */ }
@@ -199,7 +212,6 @@
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         /* Раздел "Контакты" */
-        #contact { background-image: url('https://images.unsplash.com/photo-1530143265213-c88f21f590da?q=80&w=2070&auto=format&fit=crop'); /* Радостные бегуны после финиша */ }
         .contact-info { text-align: center; }
 
         /* Footer */
@@ -226,6 +238,16 @@
             #main-nav ul.active { display: flex; }
             #main-nav ul li { margin: 10px 0; text-align: center; }
             .hamburger { display: flex; position: absolute; top: 1rem; right: 2rem; }
+
+            /* Мобильная читаемость */
+            h1 { font-size: 2.5rem !important; } /* Уменьшаем размер заголовка Hero */
+            h2 { font-size: 2rem !important; }
+            h3 { font-size: 1.5rem !important; }
+            p { font-size: 1rem !important; line-height: 1.6 !important; }
+            body { line-height: 1.6; } /* Увеличиваем межстрочный интервал */
+            .container { padding: 0 1rem; } /* Уменьшаем горизонтальные отступы */
+            .section-light, .section-bg { padding: 60px 0; } /* Уменьшаем вертикальные отступы секций */
+            .btn { padding: 12px 25px; font-size: 1rem; } /* Корректируем размер кнопок */
         }
     </style>
 </head>
@@ -296,6 +318,8 @@
                         <h3 data-lang="en" style="display:none;">Online Coaching</h3>
                         <p data-lang="ru">Персональные тренировочные планы, постоянная поддержка и анализ результатов, где бы вы ни находились.</p>
                         <p data-lang="en" style="display:none;">Personalized training plans, constant support, and analysis of results, wherever you are.</p>
+                        <a href="#contact" class="btn btn-small" data-lang="ru">Подробнее</a>
+                        <a href="#contact" class="btn btn-small" data-lang="en" style="display:none;">Learn More</a>
                     </div>
                     <div class="card">
                         <img src="Тренировки в Хайфе.jpg" alt="Тренировки в Хайфе">
@@ -303,6 +327,8 @@
                         <h3 data-lang="en" style="display:none;">In-Person Training in Haifa</h3>
                         <p data-lang="ru">Групповые и индивидуальные занятия с тренером для тех, кто живет в Хайфе и окрестностях.</p>
                         <p data-lang="en" style="display:none;">Group and individual sessions with a coach for those living in and around Haifa.</p>
+                        <a href="#contact" class="btn btn-small" data-lang="ru">Подробнее</a>
+                        <a href="#contact" class="btn btn-small" data-lang="en" style="display:none;">Learn More</a>
                     </div>
                     <div class="card">
                         <img src="Беговые сборы.jpg" alt="Беговые сборы">
@@ -310,6 +336,8 @@
                         <h3 data-lang="en" style="display:none;">Running Camps</h3>
                         <p data-lang="ru">Незабываемые беговые кэмпы в самых живописных уголках планеты для полного погружения.</p>
                         <p data-lang="en" style="display:none;">Unforgettable running camps in the most picturesque corners of the planet for full immersion.</p>
+                        <a href="#contact" class="btn btn-small" data-lang="ru">Подробнее</a>
+                        <a href="#contact" class="btn btn-small" data-lang="en" style="display:none;">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -335,7 +363,7 @@
             </div>
         </section>
         
-        <section id="contact" class="section-bg">
+        <section id="contact" class="section-light">
             <div class="container">
                 <div class="contact-info">
                     <h2 data-lang="ru">Присоединяйтесь к нам!</h2>
@@ -382,6 +410,28 @@
         langRuBtn.addEventListener('click', (e) => { e.preventDefault(); setLanguage('ru'); });
         langEnBtn.addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
         setLanguage('ru');
+
+        // JavaScript для подсветки активного раздела меню
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) { // Смещение для более ранней активации
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
     </script>
 </body>
 </html>
